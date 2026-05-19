@@ -1,4 +1,5 @@
 import * as SimpleIcons from "simple-icons";
+import Reveal from "./Reveal";
 
 const techStack = [
   {
@@ -105,32 +106,37 @@ export default function Sobre() {
     <section id="sobre" className="py-28 relative">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
-        <div className="flex items-center gap-4 mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#e8e8e8] tracking-tight">
-            Sobre
-          </h2>
-          <div className="flex-1 h-px bg-[#1e1e1e] ml-4" />
-        </div>
+        <Reveal direction="left">
+          <div className="flex items-center gap-4 mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#e8e8e8] tracking-tight">
+              Sobre
+            </h2>
+            <div className="flex-1 h-px bg-[#1e1e1e] ml-4" />
+          </div>
+        </Reveal>
 
         {/* Bio */}
-        <div className="max-w-3xl mb-16">
-          <p className="text-[#8a8a8a] text-base leading-relaxed mb-6">
-            Sou desenvolvedor full stack com experiência no desenvolvimento de
-            APIs, integrações, automações e soluções com IA aplicada. Atuo com{" "}
-            <span className="text-[#e8e8e8]">
-              Python, FastAPI, Node.js, Java Spring Boot, Docker, Google Cloud,
-              AWS, Oracle, PostgreSQL
-            </span>{" "}
-            e arquiteturas baseadas em{" "}
-            <span className="text-[#00d4d8]">RAG, LangChain e PgVector</span>.
-          </p>
-          <p className="text-[#8a8a8a] text-base leading-relaxed">
-            Tenho perfil analítico, colaborativo e orientado à entrega de valor
-            para o negócio.
-          </p>
-        </div>
+        <Reveal direction="up" delay={150}>
+          <div className="max-w-3xl mb-16">
+            <p className="text-[#8a8a8a] text-base leading-relaxed mb-6">
+              Sou desenvolvedor full stack com experiência no desenvolvimento de
+              APIs, integrações, automações e soluções com IA aplicada. Atuo com{" "}
+              <span className="text-[#e8e8e8]">
+                Python, FastAPI, Node.js, Java Spring Boot, Docker, Google Cloud,
+                AWS, Oracle, PostgreSQL
+              </span>{" "}
+              e arquiteturas baseadas em{" "}
+              <span className="text-[#00d4d8]">RAG, LangChain e PgVector</span>.
+            </p>
+            <p className="text-[#8a8a8a] text-base leading-relaxed">
+              Tenho perfil analítico, colaborativo e orientado à entrega de valor
+              para o negócio.
+            </p>
+          </div>
+        </Reveal>
 
         {/* Tech stack — 3D levitating icons */}
+        <Reveal direction="up" delay={300}>
         <div className="flex flex-wrap justify-center gap-10">
           {techStack.map(({ name, floatClass, gradient, shadow, icon }) => (
             <div
@@ -157,6 +163,7 @@ export default function Sobre() {
             </div>
           ))}
         </div>
+        </Reveal>
       </div>
     </section>
   );

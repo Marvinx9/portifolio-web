@@ -1,3 +1,5 @@
+import Reveal from './Reveal';
+
 const education = [
   {
     degree: 'Bacharelado em Ciência da Computação',
@@ -51,6 +53,7 @@ export default function Certificacoes() {
         <div className="grid md:grid-cols-2 gap-12">
 
           {/* Left — Formação */}
+          <Reveal direction="left">
           <div>
             <div className="flex items-center gap-2 text-[#00d4d8] mb-8">
               <GraduationIcon />
@@ -81,8 +84,10 @@ export default function Certificacoes() {
               ))}
             </div>
           </div>
+          </Reveal>
 
           {/* Right — Cursos e Certificações */}
+          <Reveal direction="right" delay={150}>
           <div>
             <div className="flex items-center gap-2 text-[#00d4d8] mb-8">
               <BadgeIcon />
@@ -103,6 +108,7 @@ export default function Certificacoes() {
               ))}
             </div>
           </div>
+          </Reveal>
 
         </div>
       </div>

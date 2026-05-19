@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Reveal from "./Reveal";
 
 const SUBTITLE = "Desenvolvedor Full-Stack + IA Aplicada";
 
@@ -18,7 +19,7 @@ const actionButtons = [
   },
   {
     label: "GitHub",
-    href: "https://github.com/afranio-dantas",
+    href: "https://github.com/Marvinx9",
     floatClass: "float-2",
     gradient:
       "radial-gradient(circle at 35% 30%, #8080e0 0%, #5c6bc0 55%, #3f4a99 100%)",
@@ -134,94 +135,98 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto px-6 w-full py-24">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left column */}
-          <div>
-            {/* Avatar circle */}
-            <div
-              className="mb-8 w-44 h-44 rounded-full border-2 border-[#00d4d8] relative overflow-hidden bg-[#111]"
-              style={{
-                boxShadow:
-                  "0 0 0 1px rgba(0,212,216,0.2), 0 0 40px rgba(0,212,216,0.12)",
-              }}
-            >
-              <img
-                src="/avatar.jpeg"
-                alt="Afrânio Nunes Dantas"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-
-            {/* Name */}
-            <h1 className="text-5xl md:text-6xl font-bold text-[#e8e8e8] leading-tight mb-5 tracking-tight">
-              Afrânio Nunes
-              <br />
-              <span
-                className="text-[#00d4d8]"
-                style={{ textShadow: "0 0 40px rgba(0,212,216,0.35)" }}
+          <Reveal direction="left" delay={100}>
+            <div>
+              {/* Avatar circle */}
+              <div
+                className="mb-8 w-44 h-44 rounded-full border-2 border-[#00d4d8] relative overflow-hidden bg-[#111]"
+                style={{
+                  boxShadow:
+                    "0 0 0 1px rgba(0,212,216,0.2), 0 0 40px rgba(0,212,216,0.12)",
+                }}
               >
-                Dantas
-              </span>
-            </h1>
-
-            {/* Typewriter subtitle */}
-            <div className="h-7 flex items-center mb-5">
-              <p className="text-[#e8e8e8] font-mono text-lg">
-                {displayed}
-                <span
-                  className="inline-block w-0.5 h-5 bg-[#00d4d8] ml-0.5 align-middle"
-                  style={{
-                    animation: "typewriter-cursor 0.9s step-end infinite",
-                  }}
+                <img
+                  src="/avatar.jpeg"
+                  alt="Afrânio Nunes Dantas"
+                  className="w-full h-full object-cover object-top"
                 />
+              </div>
+
+              {/* Name */}
+              <h1 className="text-5xl md:text-6xl font-bold text-[#e8e8e8] leading-tight mb-5 tracking-tight">
+                Afrânio Nunes
+                <br />
+                <span
+                  className="text-[#00d4d8]"
+                  style={{ textShadow: "0 0 40px rgba(0,212,216,0.35)" }}
+                >
+                  Dantas
+                </span>
+              </h1>
+
+              {/* Typewriter subtitle */}
+              <div className="h-7 flex items-center mb-5">
+                <p className="text-[#e8e8e8] font-mono text-lg">
+                  {displayed}
+                  <span
+                    className="inline-block w-0.5 h-5 bg-[#00d4d8] ml-0.5 align-middle"
+                    style={{
+                      animation: "typewriter-cursor 0.9s step-end infinite",
+                    }}
+                  />
+                </p>
+              </div>
+
+              {/* Description */}
+              <p className="text-[#8a8a8a] text-base leading-relaxed mb-4">
+                Construo APIs, automações e soluções com IA para resolver
+                problemas reais.
+              </p>
+
+              {/* Tags */}
+              <p className="text-[#4a4a4a] text-sm leading-relaxed font-mono">
+                Desenvolvedor Back-End com experiência em Python, FastAPI,
+                Node.js, Java/Spring Boot, Docker, GCP, AWS, RAG, LangChain e
+                PgVector.
               </p>
             </div>
-
-            {/* Description */}
-            <p className="text-[#8a8a8a] text-base leading-relaxed mb-4">
-              Construo APIs, automações e soluções com IA para resolver
-              problemas reais.
-            </p>
-
-            {/* Tags */}
-            <p className="text-[#4a4a4a] text-sm leading-relaxed font-mono">
-              Desenvolvedor Back-End com experiência em Python, FastAPI,
-              Node.js, Java/Spring Boot, Docker, GCP, AWS, RAG, LangChain e
-              PgVector.
-            </p>
-          </div>
+          </Reveal>
 
           {/* Right column — 3D levitating buttons */}
-          <div className="grid grid-cols-2 gap-10 justify-items-center">
-            {actionButtons.map(
-              ({ label, href, floatClass, gradient, shadow, icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel="noreferrer"
-                  className={`flex flex-col items-center gap-3 group ${floatClass}`}
-                >
-                  <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center relative overflow-hidden
-                              transition-transform duration-300 group-hover:scale-110"
-                    style={{ background: gradient, boxShadow: shadow }}
+          <Reveal direction="right" delay={250}>
+            <div className="grid grid-cols-2 gap-10 justify-items-center">
+              {actionButtons.map(
+                ({ label, href, floatClass, gradient, shadow, icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel="noreferrer"
+                    className={`flex flex-col items-center gap-3 group ${floatClass}`}
                   >
-                    {/* specular highlight — simulates 3D gloss */}
                     <div
-                      className="absolute top-2 left-3 w-7 h-4 rounded-full opacity-30"
-                      style={{
-                        background:
-                          "radial-gradient(ellipse, white 0%, transparent 80%)",
-                      }}
-                    />
-                    {icon}
-                  </div>
-                  <span className="text-xs font-mono text-[#00d4d8] tracking-widest">
-                    {label}
-                  </span>
-                </a>
-              ),
-            )}
-          </div>
+                      className="w-20 h-20 rounded-full flex items-center justify-center relative overflow-hidden
+                              transition-transform duration-300 group-hover:scale-110"
+                      style={{ background: gradient, boxShadow: shadow }}
+                    >
+                      {/* specular highlight — simulates 3D gloss */}
+                      <div
+                        className="absolute top-2 left-3 w-7 h-4 rounded-full opacity-30"
+                        style={{
+                          background:
+                            "radial-gradient(ellipse, white 0%, transparent 80%)",
+                        }}
+                      />
+                      {icon}
+                    </div>
+                    <span className="text-xs font-mono text-[#00d4d8] tracking-widest">
+                      {label}
+                    </span>
+                  </a>
+                ),
+              )}
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import Reveal from "./Reveal";
 
 const FILTERS = ["Todos", "IA aplicada", "Back-End", "Front-End"];
 
@@ -107,7 +108,7 @@ function ProjectCard({ project }) {
       className="flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]
                     border border-[#1e3a4a] bg-[#0a1520]/80 rounded-xl p-5 flex flex-col gap-3
                     hover:border-[#00d4d8]/50 hover:scale-[1.03] transition-all duration-300
-                    shadow-[0_0_0_1px_rgba(0,212,216,0.05)] min-h-[300px]"
+                    shadow-[0_0_0_1px_rgba(0,212,216,0.05)] min-h-[310px]"
     >
       {/* Title + icons */}
       <div className="flex items-start justify-between gap-2">
@@ -210,7 +211,7 @@ export default function Projetos() {
 
   useEffect(() => {
     if (paused || filtered.length <= visibleCount) return;
-    intervalRef.current = setInterval(next, 6000);
+    intervalRef.current = setInterval(next, 5000);
     return () => clearInterval(intervalRef.current);
   }, [paused, next, filtered.length, visibleCount]);
 
@@ -218,75 +219,81 @@ export default function Projetos() {
     <section id="projetos" className="py-28 relative">
       <div className="max-w-6xl mx-auto px-6">
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-bold text-[#e8e8e8] tracking-tight text-center mb-10">
-          Projetos
-        </h2>
+        <Reveal direction="up">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#e8e8e8] tracking-tight text-center mb-10">
+            Projetos
+          </h2>
+        </Reveal>
 
         {/* Filter tabs */}
-        <div className="flex justify-center gap-2 flex-wrap mb-12">
-          {FILTERS.map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`px-4 py-1.5 rounded-lg text-sm font-mono transition-all duration-200
+        <Reveal direction="up" delay={100}>
+          <div className="flex justify-center gap-2 flex-wrap mb-12">
+            {FILTERS.map((f) => (
+              <button
+                key={f}
+                onClick={() => setFilter(f)}
+                className={`px-4 py-1.5 rounded-lg text-sm font-mono transition-all duration-200
                 ${
                   filter === f
                     ? "bg-[#00d4d8] text-[#0a0a0a] font-semibold"
                     : "border border-[#2a2a2a] text-[#8a8a8a] hover:border-[#00d4d8]/40 hover:text-[#e8e8e8]"
                 }`}
-            >
-              {f}
-            </button>
-          ))}
-        </div>
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+        </Reveal>
 
         {/* Carousel */}
-        <div
-          className="relative"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          {/* Left arrow */}
-          <button
-            onClick={prev}
-            className="absolute -left-5 top-1/2 -translate-y-1/2 z-10
+        <Reveal direction="up" delay={200}>
+          <div
+            className="relative"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            {/* Left arrow */}
+            <button
+              onClick={prev}
+              className="absolute -left-5 top-1/2 -translate-y-1/2 z-10
                        w-10 h-10 rounded-full border border-[#2a2a2a] bg-[#0a0a0a]
                        flex items-center justify-center text-[#8a8a8a]
                        hover:border-[#00d4d8]/60 hover:text-[#00d4d8] transition-all"
-          >
-            <IconChevron dir="left" />
-          </button>
-
-          {/* Cards window */}
-          <div className="overflow-hidden py-4 -my-4">
-            <div
-              className="flex gap-6 transition-transform duration-500 ease-in-out"
-              style={{
-                transform:
-                  visibleCount === 1
-                    ? `translateX(calc(-${index} * (100% + 24px)))`
-                    : visibleCount === 2
-                      ? `translateX(calc(-${index} * (50% + 12px)))`
-                      : `translateX(calc(-${index} * (100% / 3 + 8px)))`,
-              }}
             >
-              {filtered.map((p, i) => (
-                <ProjectCard key={i} project={p} />
-              ))}
-            </div>
-          </div>
+              <IconChevron dir="left" />
+            </button>
 
-          {/* Right arrow */}
-          <button
-            onClick={next}
-            className="absolute -right-5 top-1/2 -translate-y-1/2 z-10
+            {/* Cards window */}
+            <div className="overflow-hidden py-4 -my-4">
+              <div
+                className="flex gap-6 transition-transform duration-500 ease-in-out"
+                style={{
+                  transform:
+                    visibleCount === 1
+                      ? `translateX(calc(-${index} * (100% + 24px)))`
+                      : visibleCount === 2
+                        ? `translateX(calc(-${index} * (50% + 12px)))`
+                        : `translateX(calc(-${index} * (100% / 3 + 8px)))`,
+                }}
+              >
+                {filtered.map((p, i) => (
+                  <ProjectCard key={i} project={p} />
+                ))}
+              </div>
+            </div>
+
+            {/* Right arrow */}
+            <button
+              onClick={next}
+              className="absolute -right-5 top-1/2 -translate-y-1/2 z-10
                        w-10 h-10 rounded-full border border-[#2a2a2a] bg-[#0a0a0a]
                        flex items-center justify-center text-[#8a8a8a]
                        hover:border-[#00d4d8]/60 hover:text-[#00d4d8] transition-all"
-          >
-            <IconChevron dir="right" />
-          </button>
-        </div>
+            >
+              <IconChevron dir="right" />
+            </button>
+          </div>
+        </Reveal>
 
         {/* Dots indicator */}
         <div className="flex justify-center gap-2 mt-8">

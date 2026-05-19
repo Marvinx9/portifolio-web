@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const experiences = [
   {
     role: "Desenvolvedor Back-End Júnior",
@@ -98,9 +100,11 @@ export default function Experiencia() {
     <section id="experiencia" className="py-28 relative">
       <div className="max-w-5xl mx-auto px-6">
         {/* Section header — centered */}
-        <h2 className="text-3xl md:text-4xl font-bold text-[#e8e8e8] tracking-tight text-center mb-20">
-          Experiência
-        </h2>
+        <Reveal direction="up">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#e8e8e8] tracking-tight text-center mb-20">
+            Experiência
+          </h2>
+        </Reveal>
 
         {/* Timeline */}
         <div className="relative">
@@ -114,7 +118,8 @@ export default function Experiencia() {
             {experiences.map((exp, i) => {
               const isLeft = i % 2 === 0;
               return (
-                <div key={i} className="relative flex items-start">
+                <Reveal key={i} direction="up" delay={i * 150}>
+                <div className="relative flex items-start">
                   {/* ── Mobile layout ── */}
                   <div className="md:hidden w-full pl-10">
                     {/* Dot */}
@@ -162,6 +167,7 @@ export default function Experiencia() {
                     )}
                   </div>
                 </div>
+                </Reveal>
               );
             })}
           </div>
