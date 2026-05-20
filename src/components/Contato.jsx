@@ -6,11 +6,14 @@ const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+const EMAIL = "afraniodantas0224@gmail.com";
+
 const contactLinks = [
   {
     label: "Email",
-    value: "afraniodantas0224@gmail.com",
-    href: "mailto:afraniodantas0224@gmail.com",
+    value: EMAIL,
+    href: null,
+    clipboard: true,
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -50,6 +53,14 @@ export default function Contato() {
   const formRef = useRef(null);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(EMAIL).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -106,39 +117,49 @@ export default function Contato() {
               </div>
 
               <div className="flex flex-col gap-3">
-                {contactLinks.map(({ label, value, href, icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-4 p-4
-                             border border-[#1e3a4a] bg-[#0a1520]/60 rounded-xl
-                             hover:border-[#00d4d8]/50 hover:bg-[#0a1520]
-                             transition-all duration-300 group"
-                  >
-                    <span className="text-[#00d4d8]/60 group-hover:text-[#00d4d8] transition-colors">
-                      {icon}
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-[10px] font-mono text-[#4a4a4a] uppercase tracking-widest mb-0.5">
-                        {label}
+                {contactLinks.map(({ label, value, href, icon, clipboard }) => {
+                  const cardClass =
+                    "flex items-center gap-4 p-4 w-full text-left border border-[#1e3a4a] bg-[#0a1520]/60 rounded-xl hover:border-[#00d4d8]/50 hover:bg-[#0a1520] transition-all duration-300 group";
+
+                  const inner = (
+                    <>
+                      <span className="text-[#00d4d8]/60 group-hover:text-[#00d4d8] transition-colors">
+                        {icon}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-[10px] font-mono text-[#4a4a4a] uppercase tracking-widest mb-0.5">
+                          {label}
+                        </div>
+                        <div className="text-sm font-mono text-[#8a8a8a] group-hover:text-[#e8e8e8] transition-colors truncate">
+                          {clipboard && copied ? "Copiado!" : value}
+                        </div>
                       </div>
-                      <div className="text-sm font-mono text-[#8a8a8a] group-hover:text-[#e8e8e8] transition-colors truncate">
-                        {value}
-                      </div>
-                    </div>
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      className="w-4 h-4 text-[#2a2a2a] group-hover:text-[#00d4d8] transition-all group-hover:translate-x-1 flex-shrink-0"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </a>
-                ))}
+                      {clipboard ? (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
+                          className="w-4 h-4 text-[#2a2a2a] group-hover:text-[#00d4d8] transition-colors flex-shrink-0">
+                          {copied
+                            ? <path d="M20 6L9 17l-5-5" />
+                            : <><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" /></>}
+                        </svg>
+                      ) : (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
+                          className="w-4 h-4 text-[#2a2a2a] group-hover:text-[#00d4d8] transition-all group-hover:translate-x-1 flex-shrink-0">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      )}
+                    </>
+                  );
+
+                  return clipboard ? (
+                    <button key={label} onClick={handleCopy} className={cardClass}>
+                      {inner}
+                    </button>
+                  ) : (
+                    <a key={label} href={href} target="_blank" rel="noreferrer" className={cardClass}>
+                      {inner}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </Reveal>

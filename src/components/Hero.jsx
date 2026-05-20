@@ -32,7 +32,7 @@ const actionButtons = [
   },
   {
     label: "E-mail",
-    href: "mailto:afraniodantas0224@gmail.com",
+    href: "#contato",
     floatClass: "float-3",
     gradient:
       "radial-gradient(circle at 35% 30%, #26e0cc 0%, #00b8a9 55%, #00837a 100%)",
