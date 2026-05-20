@@ -72,7 +72,8 @@ const actionButtons = [
   },
   {
     label: "Baixar CV",
-    href: "#",
+    href: "/curriculo_afranio_dantas.pdf",
+    download: true,
     floatClass: "float-5",
     gradient:
       "radial-gradient(circle at 35% 30%, #33d6f5 0%, #00b8d4 55%, #0087a0 100%)",
@@ -185,7 +186,7 @@ export default function Hero() {
 
               {/* Tags */}
               <p className="text-[#4a4a4a] text-sm leading-relaxed font-mono">
-                Desenvolvedor Back-End com experiência em Python, FastAPI,
+                Desenvolvedor Full-Stack com experiência em Python, FastAPI,
                 Node.js, Java/Spring Boot, Docker, GCP, AWS, RAG, LangChain e
                 PgVector.
               </p>
@@ -196,12 +197,21 @@ export default function Hero() {
           <Reveal direction="right" delay={250}>
             <div className="grid grid-cols-2 gap-10 justify-items-center">
               {actionButtons.map(
-                ({ label, href, floatClass, gradient, shadow, icon }) => (
+                ({
+                  label,
+                  href,
+                  download,
+                  floatClass,
+                  gradient,
+                  shadow,
+                  icon,
+                }) => (
                   <a
                     key={label}
                     href={href}
                     target={href.startsWith("http") ? "_blank" : undefined}
                     rel="noreferrer"
+                    download={download || undefined}
                     className={`flex flex-col items-center gap-3 group ${floatClass}`}
                   >
                     <div

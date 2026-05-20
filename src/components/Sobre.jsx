@@ -122,47 +122,47 @@ export default function Sobre() {
               Sou desenvolvedor full stack com experiência no desenvolvimento de
               APIs, integrações, automações e soluções com IA aplicada. Atuo com{" "}
               <span className="text-[#e8e8e8]">
-                Python, FastAPI, Node.js, Java Spring Boot, Docker, Google Cloud,
-                AWS, Oracle, PostgreSQL
+                Python, FastAPI, Node.js, Java Spring Boot, Docker, Google
+                Cloud, AWS, Oracle, PostgreSQL
               </span>{" "}
               e arquiteturas baseadas em{" "}
               <span className="text-[#00d4d8]">RAG, LangChain e PgVector</span>.
             </p>
             <p className="text-[#8a8a8a] text-base leading-relaxed">
-              Tenho perfil analítico, colaborativo e orientado à entrega de valor
-              para o negócio.
+              Meu foco é criar soluções que simplificam processos, integram
+              sistemas e geram valor real para o negócio.
             </p>
           </div>
         </Reveal>
 
         {/* Tech stack — 3D levitating icons */}
         <Reveal direction="up" delay={300}>
-        <div className="flex flex-wrap justify-center gap-10">
-          {techStack.map(({ name, floatClass, gradient, shadow, icon }) => (
-            <div
-              key={name}
-              className={`flex flex-col items-center gap-3 ${floatClass}`}
-            >
+          <div className="flex flex-wrap justify-center gap-10">
+            {techStack.map(({ name, floatClass, gradient, shadow, icon }) => (
               <div
-                className="w-20 h-20 rounded-full flex items-center justify-center relative overflow-hidden"
-                style={{ background: gradient, boxShadow: shadow }}
+                key={name}
+                className={`flex flex-col items-center gap-3 ${floatClass}`}
               >
-                {/* specular highlight */}
                 <div
-                  className="absolute top-2 left-4 w-8 h-5 rounded-full opacity-30"
-                  style={{
-                    background:
-                      "radial-gradient(ellipse, white 0%, transparent 80%)",
-                  }}
-                />
-                {icon}
+                  className="w-20 h-20 rounded-full flex items-center justify-center relative overflow-hidden"
+                  style={{ background: gradient, boxShadow: shadow }}
+                >
+                  {/* specular highlight */}
+                  <div
+                    className="absolute top-2 left-4 w-8 h-5 rounded-full opacity-30"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse, white 0%, transparent 80%)",
+                    }}
+                  />
+                  {icon}
+                </div>
+                <span className="text-xs font-mono text-[#00d4d8] tracking-widest">
+                  {name}
+                </span>
               </div>
-              <span className="text-xs font-mono text-[#00d4d8] tracking-widest">
-                {name}
-              </span>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
         </Reveal>
       </div>
     </section>

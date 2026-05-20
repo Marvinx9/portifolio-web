@@ -1,5 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import Reveal from "./Reveal";
+
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const contactLinks = [
   {
@@ -42,18 +47,36 @@ const contactLinks = [
 ];
 
 export default function Contato() {
+  const formRef = useRef(null);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const mailto = `mailto:afraniodantas0224@gmail.com?subject=Contato via Portfolio - ${encodeURIComponent(form.name)}&body=${encodeURIComponent(`Nome: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
-    window.open(mailto);
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
+    setStatus("sending");
+    emailjs
+      .send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+        },
+        EMAILJS_PUBLIC_KEY,
+      )
+      .then(() => {
+        setStatus("sent");
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 4000);
+      })
+      .catch(() => {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 4000);
+      });
   };
 
   return (
@@ -176,11 +199,16 @@ export default function Contato() {
 
               <button
                 type="submit"
+                disabled={status === "sending"}
                 className="w-full py-3.5 bg-[#00d4d8] text-[#0a0a0a] font-mono font-semibold text-sm
                          rounded-xl hover:bg-white transition-all duration-300
-                         shadow-[0_0_30px_rgba(0,212,216,0.2)] hover:shadow-[0_0_40px_rgba(0,212,216,0.4)]"
+                         shadow-[0_0_30px_rgba(0,212,216,0.2)] hover:shadow-[0_0_40px_rgba(0,212,216,0.4)]
+                         disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {sent ? "✓ Mensagem enviada!" : "Enviar Mensagem"}
+                {status === "sending" && "Enviando..."}
+                {status === "sent" && "✓ Mensagem enviada!"}
+                {status === "error" && "Erro ao enviar. Tente novamente."}
+                {status === "idle" && "Enviar Mensagem"}
               </button>
             </form>
           </Reveal>

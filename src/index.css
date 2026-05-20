@@ -10,6 +10,7 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 64px;
+    overflow-x: hidden;
   }
 
   body {
@@ -18,6 +19,7 @@
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   ::selection {

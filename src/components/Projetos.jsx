@@ -5,21 +5,107 @@ const FILTERS = ["Todos", "IA aplicada", "Back-End", "Front-End"];
 
 const projects = [
   {
-    title: "Money Server",
+    title: "Enquetes API",
     category: "Back-End",
     summary:
-      "API back-end com Node.js, PostgreSQL e Docker para gerenciamento de dados financeiros.",
-    stack: ["Node.js", "PostgreSQL", "Docker", "SQL"],
-    github: "https://github.com/afranio-dantas",
+      "API desenvolvida com arquitetura desacoplada, aplicando TDD, Clean Architecture, princípios SOLID e Design Patterns para melhor organização, testabilidade e manutenção do código.",
+    stack: [
+      "Node",
+      "Docker",
+      "TypeScript",
+      "SOLID",
+      "TDD",
+      "Clean Architecture",
+      "Husky",
+    ],
+    github: "https://github.com/Marvinx9/nodejsApi",
     demo: null,
   },
   {
-    title: "Loja API",
+    title: "FeedView",
+    category: "Front-End",
+    summary: "Aplicação com layout limpo inspirado em forum de publicações.",
+    stack: ["React", "Vite", "CSS Module"],
+    github: "https://github.com/Marvinx9/feedview",
+    demo: "https://feedview-woad.vercel.app/",
+  },
+  {
+    title: "Cafeteria",
+    category: "Front-End",
+    summary:
+      "Esse projeto criado com React tende de apresentar um site de cafeteria. Onde apreciadores de café podem obter detalhes e pedir o seu café favorito.",
+    stack: ["React", "Vite", "ClassNames"],
+    github: "https://github.com/Marvinx9/culinaria",
+    demo: "https://culinaria-one.vercel.app/",
+  },
+  {
+    title: "Py Comunidade",
+    category: "Back-End",
+    summary: "Aplicação web com Flask que simula um fórum de postagens",
+    stack: ["Python", "SQLAlchemy", "Flask-WTF", "Bcrypt", "Bootstrap"],
+    github: "https://github.com/Marvinx9/pycomunidade",
+    demo: null,
+  },
+  {
+    title: "Modelo de Reconhecimento Facial",
+    category: "IA aplicada",
+    summary:
+      "Treinamento de modelo para captação e reconhecimento facial e criação de embeddings com FaceNet-keras",
+    stack: ["Python", "TensorFlow", "Numpy", "OpenCv", "NTCNN", "Pillow"],
+    github: "https://github.com/Marvinx9/modelo-reconhecimento-facial",
+    demo: null,
+  },
+  {
+    title: "Tecnoboard",
+    category: "Front-End",
+    summary:
+      "Plataforma criada para exibir projetos de tecnologia com design moderno e responsivo.",
+    stack: ["React", "Vite", "Tailwind CSS"],
+    github: "https://github.com/Marvinx9/tech-board-web",
+    demo: "https://tech-board-web.vercel.app/",
+  },
+  {
+    title: "Event Calendar",
     category: "Back-End",
     summary:
-      "API REST desenvolvida com Java e Spring Boot contendo funcionalidades de uma loja.",
-    stack: ["Java", "Spring Boot", "JPA", "REST API"],
-    github: "https://github.com/afranio-dantas",
+      "O Event Calendar é um gerenciador de eventos desenvolvido com Nestjs.",
+    stack: ["Node", "Docker", "TypeScript", "Postgres"],
+    github: "https://github.com/Marvinx9/event-calendar-api",
+    demo: null,
+  },
+  {
+    title: "MS Notification",
+    category: "Back-End",
+    summary:
+      "Este microserviço foi desenvolvido com Node para servir como messageria por outras aplicações maiores.",
+    stack: ["Node", "NPM", "Jest", "Kafka", "TypeScript", "Nodemailer"],
+    github: "https://github.com/Marvinx9/ms-notification",
+    demo: null,
+  },
+  {
+    title: "Money Server",
+    category: "Back-End",
+    summary:
+      "Este projeto é o back-end de uma aplicação web para administração de finanças, responsável por gerenciar usuários, autenticação e transações financeiras.",
+    stack: ["Node", "Yarn", "Jest", "Docker", "TypeScript", "Postgres"],
+    github: "https://github.com/Marvinx9/money-server",
+    demo: null,
+  },
+  {
+    title: "Store Java",
+    category: "Back-End",
+    summary: "API back-end com Spring Boot, para gerenciamento de loja.",
+    stack: ["Java", "H2 Database", "JPA"],
+    github: "https://github.com/Marvinx9/store-java",
+    demo: null,
+  },
+  {
+    title: "Concessionaria",
+    category: "Back-End",
+    summary:
+      "API desenvolvida com NestJs para gerenciamento de concessionária, incluindo cadastro de veículos, aluguel e devolução.",
+    stack: ["Node", "Postgres", "SQL", "Docker", "TypeScript", "Swagger"],
+    github: "https://github.com/Marvinx9/concessionaria-api",
     demo: null,
   },
   {
@@ -27,8 +113,17 @@ const projects = [
     category: "Back-End",
     summary:
       "API com CRUD de usuários, autenticação, login e recuperação de conta.",
-    stack: ["Java", "Spring Boot", "Spring Security"],
-    github: "https://github.com/afranio-dantas",
+    stack: ["Java", "Spring Boot", "Spring Security", "Thymeleaf", "Flywaydb"],
+    github: "https://github.com/Marvinx9/spring-security",
+    demo: null,
+  },
+  {
+    title: "Treinamento de Redes Neurais Recorrentes",
+    category: "IA aplicada",
+    summary:
+      "Treinamento de modelo para realizar previsão do país de origem mais provável baseado no sobrenome de uma pessoa",
+    stack: ["Python", "Matplotlib", "Numpy", "Pytorch", "RNNCell"],
+    github: "https://github.com/Marvinx9/redes-recorrentes",
     demo: null,
   },
   {
@@ -36,27 +131,78 @@ const projects = [
     category: "IA aplicada",
     summary:
       "Pipeline de Retrieval-Augmented Generation com LangChain, PgVector e Google Cloud para Q&A sobre documentos.",
-    stack: ["Python", "LangChain", "PgVector", "Google Cloud", "FastAPI"],
-    github: "https://github.com/afranio-dantas",
+    stack: [
+      "Python",
+      "LangChain",
+      "PgVector",
+      "Google Cloud",
+      "Streamlit",
+      "Docker",
+    ],
+    github: "https://github.com/Marvinx9/gemini-agentic-rag",
     demo: null,
   },
   {
-    title: "Automação com IA",
+    title: "Sugestor de Cid-10",
     category: "IA aplicada",
     summary:
-      "Automações de processos internos com modelos de linguagem, integração de APIs e workflows inteligentes.",
-    stack: ["Python", "FastAPI", "LLMs", "Docker"],
-    github: "https://github.com/afranio-dantas",
+      "Esse projeto realiza uso  de LLMs para sugerir códigos de classificação internacional de doenças (CID-10) com base em descrições de sintomas e condições médicas, auxiliando profissionais de saúde na codificação precisa e eficiente.",
+    stack: ["Python", "LLMs", "WTForms", "Flask", "GCP", "Html", "CSS"],
+    github: "https://github.com/Marvinx9/cid-sugestor",
     demo: null,
   },
   {
-    title: "Portfolio Web",
+    title: "Contador de Tokens",
+    category: "IA aplicada",
+    summary:
+      "Esse projeto realiza a contagem de tokens para modelos de linguagem do GCP, auxiliando no controle de custos e otimização de prompts.",
+    stack: ["Python", "LLMs", "Pydantic", "Genai", "GCP"],
+    github: "https://github.com/Marvinx9/gemini-python",
+    demo: null,
+  },
+  {
+    title: "Modelo Preditivo de Aluguel",
+    category: "IA aplicada",
+    summary:
+      "Inclui treinamento de modelos de redes neurais a partir de um perceptron simples até camadas mais complexas na rede. O estudo inclui modelos de regressão e classificação além de motores para otimizar os modelos de aprendizagem.",
+    stack: ["Python", "Pytorch", "Regressao", "Matplotlib", "Pandas"],
+    github: "https://github.com/Marvinx9/deep-learning-pytorch",
+    demo: null,
+  },
+  {
+    title: "Todo List",
     category: "Front-End",
     summary:
-      "Este portfólio! Desenvolvido com React + Vite + Tailwind CSS seguindo design do Figma.",
+      "Este projeto foi Desenvolvido com React + Vite + Tailwind CSS para gerenciamento dos planos de estudo.",
     stack: ["React", "Vite", "Tailwind CSS"],
-    github: "https://github.com/afranio-dantas",
-    demo: "#",
+    github: "https://github.com/Marvinx9/todo-list",
+    demo: "https://todo-list-git-main-marvinx9s-projects.vercel.app/",
+  },
+  {
+    title: "Organo",
+    category: "Front-End",
+    summary:
+      "Plataforma para organização de equipes e desenvolvimento por categoria.",
+    stack: ["React", "Vite", "Tailwind CSS"],
+    github: "https://github.com/Marvinx9/organo",
+    demo: "https://organo-umber-zeta.vercel.app/",
+  },
+  {
+    title: "Timer Pomodoro",
+    category: "Front-End",
+    summary:
+      "Aplicação inspirada na técnica Pomodoro, que ajuda a manter o foco e a produtividade.",
+    stack: ["React", "Vite", "CSS Module"],
+    github: "https://github.com/Marvinx9/timer-pomodoro",
+    demo: "https://timer-pomodoro-iota.vercel.app/",
+  },
+  {
+    title: "Luz & Cena",
+    category: "Front-End",
+    summary: "Aplicação com layout responsivo para stream de filmes.",
+    stack: ["React", "Vite", "CSS Module"],
+    github: "https://github.com/Marvinx9/luz-e-cena",
+    demo: "https://luz-e-cena-phi.vercel.app/",
   },
 ];
 
@@ -211,7 +357,7 @@ export default function Projetos() {
 
   useEffect(() => {
     if (paused || filtered.length <= visibleCount) return;
-    intervalRef.current = setInterval(next, 5000);
+    intervalRef.current = setInterval(next, 3500);
     return () => clearInterval(intervalRef.current);
   }, [paused, next, filtered.length, visibleCount]);
 

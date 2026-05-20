@@ -2,7 +2,7 @@ import Reveal from "./Reveal";
 
 const experiences = [
   {
-    role: "Desenvolvedor Back-End Júnior",
+    role: "Desenvolvedor Back-End",
     company: "ICC Saúde",
     location: "Fortaleza, CE",
     start: "Jan/2025",
@@ -25,7 +25,7 @@ const experiences = [
     ],
   },
   {
-    role: "Estágio em Desenvolvimento Back-End",
+    role: "Estágio em Desenvolvimento",
     company: "Liv Saúde",
     location: "Fortaleza, CE",
     start: "Fev/2024",
@@ -119,54 +119,54 @@ export default function Experiencia() {
               const isLeft = i % 2 === 0;
               return (
                 <Reveal key={i} direction="up" delay={i * 150}>
-                <div className="relative flex items-start">
-                  {/* ── Mobile layout ── */}
-                  <div className="md:hidden w-full pl-10">
-                    {/* Dot */}
-                    <div
-                      className="absolute left-4 -translate-x-1/2 top-5 z-10 flex items-center justify-center
+                  <div className="relative flex items-start">
+                    {/* ── Mobile layout ── */}
+                    <div className="md:hidden w-full pl-10">
+                      {/* Dot */}
+                      <div
+                        className="absolute left-4 -translate-x-1/2 top-5 z-10 flex items-center justify-center
                                     w-5 h-5 rounded-full bg-[#0a0a0a] border-2 border-[#00d4d8]
                                     shadow-[0_0_10px_rgba(0,212,216,0.7)]"
-                    >
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#00d4d8]" />
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#00d4d8]" />
+                      </div>
+                      <Card exp={exp} />
                     </div>
-                    <Card exp={exp} />
-                  </div>
 
-                  {/* ── Desktop layout ── */}
-                  <div className="hidden md:flex w-full items-start">
-                    {/* Dot centered on the line */}
-                    <div
-                      className="absolute left-1/2 -translate-x-1/2 top-5 z-10 flex items-center justify-center
+                    {/* ── Desktop layout ── */}
+                    <div className="hidden md:flex w-full items-start">
+                      {/* Dot centered on the line */}
+                      <div
+                        className="absolute left-1/2 -translate-x-1/2 top-5 z-10 flex items-center justify-center
                                     w-5 h-5 rounded-full bg-[#0a0a0a] border-2 border-[#00d4d8]
                                     shadow-[0_0_10px_rgba(0,212,216,0.7)]"
-                    >
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#00d4d8]" />
-                    </div>
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#00d4d8]" />
+                      </div>
 
-                    {isLeft ? (
-                      <>
-                        {/* Card on the left */}
-                        <div className="w-1/2 pr-12 flex justify-end">
-                          <Card exp={exp} />
-                        </div>
-                        {/* Connector line left→center */}
-                        <div className="absolute left-[calc(50%-3rem)] top-[1.625rem] w-12 h-px bg-[#00d4d8]/30" />
-                        <div className="w-1/2" />
-                      </>
-                    ) : (
-                      <>
-                        <div className="w-1/2" />
-                        {/* Connector line center→right */}
-                        <div className="absolute left-1/2 top-[1.625rem] w-12 h-px bg-[#00d4d8]/30" />
-                        {/* Card on the right */}
-                        <div className="w-1/2 pl-12">
-                          <Card exp={exp} />
-                        </div>
-                      </>
-                    )}
+                      {isLeft ? (
+                        <>
+                          {/* Card on the left */}
+                          <div className="w-1/2 pr-12 flex justify-end">
+                            <Card exp={exp} />
+                          </div>
+                          {/* Connector line left→center */}
+                          <div className="absolute left-[calc(50%-3rem)] top-[1.625rem] w-12 h-px bg-[#00d4d8]/30" />
+                          <div className="w-1/2" />
+                        </>
+                      ) : (
+                        <>
+                          <div className="w-1/2" />
+                          {/* Connector line center→right */}
+                          <div className="absolute left-1/2 top-[1.625rem] w-12 h-px bg-[#00d4d8]/30" />
+                          {/* Card on the right */}
+                          <div className="w-1/2 pl-12">
+                            <Card exp={exp} />
+                          </div>
+                        </>
+                      )}
+                    </div>
                   </div>
-                </div>
                 </Reveal>
               );
             })}
