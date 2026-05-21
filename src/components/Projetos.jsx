@@ -24,8 +24,9 @@ const projects = [
   {
     title: "FeedView",
     category: "Front-End",
-    summary: "Aplicação com layout limpo inspirado em forum de publicações.",
-    stack: ["React", "Vite", "CSS Module"],
+    summary:
+      "Aplicação web desenvolvida para simular uma interface de feed social",
+    stack: ["React", "Vite", "CSS Module", "TypeScript", "Date Fns"],
     github: "https://github.com/Marvinx9/feedview",
     demo: "https://feedview-woad.vercel.app/",
   },
